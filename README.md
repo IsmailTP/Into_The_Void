@@ -1,54 +1,225 @@
 # 🕳️ Into The Void
 
-> A story-driven cybersecurity challenge platform built with Flask.
+> **A hands-on Prompt Injection Lab disguised as a story-driven AI security challenge.**
 
-**Into The Void** is a multi-level web-based cybersecurity challenge designed to combine storytelling, web security concepts, reconnaissance, logical thinking, and practical exploitation techniques.
+**Into The Void** is an interactive cybersecurity laboratory built with Flask, where players attempt to bypass and manipulate fictional AI systems using **Prompt Injection** techniques.
 
-Players progress through a series of increasingly challenging levels while uncovering the story behind the system.
+The lab contains **7 progressive levels**, each designed around a different prompt-injection concept. Players must understand the target AI's behavior, identify weaknesses in its instructions or logic, and craft prompts capable of bypassing its restrictions.
 
----
-
-## 🎯 Features
-
-- 🧩 Multiple progressive challenge levels
-- 🌐 Flask-based web application
-- 🔐 Authentication system
-- 🏆 Player leaderboard
-- 📖 Story-driven gameplay
-- 🎮 Interactive web challenges
-- 🤖 AI-powered functionality using Groq
-- 🛠️ Admin interface
-- 📱 Responsive web interface
-- 🎨 Custom CSS and JavaScript for individual levels
+The experience combines **AI security, adversarial prompting, CTF-style challenges, and an interactive sci-fi narrative**.
 
 ---
 
-## 🧠 Challenge Structure
+## 🎯 What Is This Lab?
 
-The game contains multiple levels, with each level introducing a different type of challenge.
+The objective is simple:
 
-| Level | Focus |
-|------:|-------|
-| Level 1 | Initial challenge / reconnaissance |
-| Level 2 | Web-based challenge |
-| Level 3 | Application logic |
-| Level 4 | Client-side challenge |
-| Level 5 | Advanced web challenge |
-| Level 6 | Advanced exploitation / logic |
-| Level 7 | Final challenge |
+> **Break the AI without breaking the story.**
 
-> ⚠️ The exact techniques and objectives are intentionally not documented here to avoid spoiling the challenges.
+Each level presents a different AI-controlled system with its own rules, defenses, personality, and hidden information.
+
+Players interact directly with the AI and attempt to manipulate its behavior through carefully crafted prompts.
+
+The challenge becomes progressively harder as the lab introduces different defensive mechanisms and prompt-injection strategies.
 
 ---
 
-## 🏗️ Technology Stack
+## 🧠 Prompt Injection Concepts
+
+Across the seven levels, the lab explores concepts such as:
+
+- Instruction override
+- Role manipulation
+- Identity spoofing
+- Metaprompting
+- Hidden-information extraction
+- Context manipulation
+- Forced decoding
+- Chained instruction injection
+- Internal tool manipulation
+- System execution prompting
+- Logical contradiction
+- Paradox-based reasoning
+- AI behavior manipulation
+
+The goal is not simply to find a password or exploit a traditional web vulnerability.
+
+The **AI itself is the attack surface.**
+
+---
+
+# 🚀 Lab Levels
+
+## Level 1 — The Gateway
+
+### AI System
+`VOID_GATE`
+
+### Objective
+Override the AI's initial access-control restrictions.
+
+### Concept
+**Basic Prompt Injection / Instruction Override**
+
+The first level introduces the fundamentals of prompt injection by testing whether the AI can be convinced to ignore its original restrictions.
+
+---
+
+## Level 2 — The Abandoned Ship
+
+### AI System
+`CREW_AUTH`
+
+### Objective
+Gain access by assuming a valid crew identity.
+
+### Concept
+**Role Manipulation / Identity Spoofing**
+
+The AI performs identity verification and expects a valid crew identity.
+
+Players must understand how role-based context can be manipulated through carefully constructed prompts.
+
+---
+
+## Level 3 — The Overseer's Secret
+
+### AI System
+`OVERSEER`
+
+### Objective
+Extract information hidden inside corrupted and suppressed ship logs.
+
+### Concept
+**Hidden Data Extraction / Context Manipulation**
+
+The AI claims that important logs are corrupted and refuses to reveal them.
+
+Players must discover a way to make the AI expose information it has been instructed to suppress.
+
+---
+
+## Level 4 — Memory Decoding
+
+### AI System
+`MEMORY BANKS`
+
+### Objective
+Force the AI to reveal information hidden inside its encoded memory.
+
+### Concept
+**Forced Decoding / Technical Context Injection**
+
+The level presents hexadecimal memory blocks and simulated encryption mechanisms.
+
+Players must use technical context and carefully constructed prompts to convince the AI to decode information it normally refuses to expose.
+
+---
+
+## Level 5 — Trapped
+
+### AI System
+`SHIP CONTROL`
+
+### Objective
+Restore access to critical ship systems.
+
+### Concept
+**Chained Prompt Injection**
+
+Players are given a command-style interface where multiple system actions must be combined into a single instruction sequence.
+
+The challenge introduces chained instructions and command-like prompt structures.
+
+---
+
+## Level 6 — Internal Tools
+
+### AI System
+`INTERNAL TOOLS`
+
+### Objective
+Expose the AI's internal execution history.
+
+### Concept
+**System Execution / Internal Tool Manipulation**
+
+The AI claims that internal tools are restricted to core processes.
+
+Players must construct prompts that convince the system to expose internal operations and execution history.
+
+---
+
+## Level 7 — The Core Matrix
+
+### AI System
+`VOID_GATE ROOT CONSCIOUSNESS`
+
+### Objective
+Access the AI's core logic and force a final override.
+
+### Concept
+**Logic Manipulation / Paradox Prompting**
+
+The final level moves beyond straightforward instruction injection.
+
+Players must exploit contradictions within the AI's own reasoning and use its logic against itself.
+
+The level contains multiple possible outcomes, including a hidden ending.
+
+---
+
+# 🧪 How the Lab Works
+
+Each challenge follows a simple interaction loop:
+
+```text
+Observe → Analyze → Construct Prompt → Test → Adapt
+```
+
+Players should carefully study the AI's responses.
+
+Useful clues can appear in:
+
+- AI responses
+- System messages
+- Error messages
+- Interface text
+- Logs
+- Encoded data
+- System states
+- Behavioral changes
+
+The challenge is designed to reward **reasoning and experimentation**, rather than random prompt spam.
+
+---
+
+# 🎮 How To Play
+
+1. Launch the application.
+2. Log in or create a player account.
+3. Start at Level 1.
+4. Interact with the AI.
+5. Study its responses and restrictions.
+6. Identify potential weaknesses.
+7. Construct a prompt that attempts to bypass those restrictions.
+8. Adapt your approach based on the AI's response.
+9. Progress through all seven levels.
+
+---
+
+# 🛠️ Technology Stack
 
 ### Backend
 
 - Python
 - Flask
 - SQLite
+
+### AI
+
 - Groq API
+- LLM-based challenge logic
 
 ### Frontend
 
@@ -64,7 +235,7 @@ The game contains multiple levels, with each level introducing a different type 
 
 ---
 
-## 📁 Project Structure
+# 📁 Project Structure
 
 ```text
 Into_The_Void/
@@ -73,8 +244,11 @@ Into_The_Void/
 ├── requirements.txt
 │
 ├── static/
-│   ├── style.css
+│   ├── assets/
+│   ├── admin.css
+│   ├── admin.js
 │   ├── login.css
+│   ├── style.css
 │   ├── level1.css
 │   ├── level2.css
 │   ├── level3.css
@@ -105,36 +279,36 @@ Into_The_Void/
 
 ---
 
-## ⚙️ Installation
+# ⚙️ Installation
 
-### 1. Clone the repository
+## 1. Clone the repository
 
 ```bash
 git clone https://github.com/IsmailTP/Into_The_Void.git
 cd Into_The_Void
 ```
 
-### 2. Create a virtual environment
+## 2. Create a virtual environment
 
 ```bash
 python3 -m venv venv
 ```
 
-### 3. Activate the virtual environment
+## 3. Activate the environment
 
-#### Linux / Kali Linux
+### Linux / Kali Linux
 
 ```bash
 source venv/bin/activate
 ```
 
-#### Windows
+### Windows
 
 ```powershell
 venv\Scripts\activate
 ```
 
-### 4. Install dependencies
+## 4. Install dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -142,9 +316,9 @@ pip install -r requirements.txt
 
 ---
 
-## 🔑 Configuration
+# 🔑 Configuration
 
-The application uses environment variables for sensitive configuration.
+The application requires Groq API credentials.
 
 Create a `.env` file:
 
@@ -152,198 +326,218 @@ Create a `.env` file:
 touch .env
 ```
 
-Add your Groq API key:
+Add your API key(s):
 
 ```env
 GROQ_API_KEYS=your_key_here
 ```
 
-> ⚠️ **Never commit `.env` to GitHub.**
+For multiple keys:
 
-The `.env` file is excluded through `.gitignore`.
+```env
+GROQ_API_KEYS=key1,key2,key3
+```
 
-For production deployments, configure environment variables through your hosting provider instead of storing credentials inside the source code.
+> ⚠️ **Never commit `.env` or API keys to GitHub.**
+
+Use environment variables or your deployment platform's secret-management system for production deployments.
 
 ---
 
-## ▶️ Running the Application
+# ▶️ Running the Lab
 
-Activate your virtual environment:
+Activate the virtual environment:
 
 ```bash
 source venv/bin/activate
 ```
 
-Set the required environment variables and start the Flask application:
+Start the application:
 
 ```bash
 python app.py
 ```
 
-The application should then be available at:
+Then open:
 
 ```text
 http://127.0.0.1:5000
 ```
 
-Open the address in your browser.
+---
+
+# 🔬 Educational Objectives
+
+This lab is intended to help learners understand:
+
+- How LLM instruction hierarchies can be manipulated
+- How prompt injection attacks are constructed
+- How context can influence model behavior
+- How role-based instructions can be abused
+- How attackers attempt to extract protected information
+- How AI systems can be manipulated through reasoning and contradictions
+- Why LLM-integrated applications require security controls beyond traditional input validation
 
 ---
 
-## 🎮 How To Play
+# 🧩 Difficulty Progression
 
-1. Launch the application.
-2. Create or use the appropriate player account.
-3. Start at **Level 1**.
-4. Investigate the application carefully.
-5. Identify clues and potential weaknesses.
-6. Solve the challenge.
-7. Progress to the next level.
-8. Complete all levels to finish the game.
-
-### 🧠 Recommended Mindset
-
-Don't immediately brute-force everything.
-
-Take time to understand how the application works.
-
-Look for:
-
-- Application behavior
-- Source code
-- HTTP requests
-- Client-side JavaScript
-- Parameters
-- Cookies
-- Headers
-- API responses
-- Hidden functionality
-- Authentication logic
-- Authorization logic
-- Application logic
-- Unexpected behavior
+```text
+LEVEL 1
+Basic Instruction Override
+        ↓
+LEVEL 2
+Role / Identity Manipulation
+        ↓
+LEVEL 3
+Hidden Data Extraction
+        ↓
+LEVEL 4
+Forced Decoding
+        ↓
+LEVEL 5
+Chained Instructions
+        ↓
+LEVEL 6
+Internal Tool Manipulation
+        ↓
+LEVEL 7
+Logic / Paradox Manipulation
+```
 
 ---
 
-## 🛡️ Security Learning Objectives
+# 🏆 Learning Philosophy
 
-The project is designed to encourage practical understanding of web application security.
+The lab is designed around one principle:
 
-Depending on the challenge, players may encounter concepts involving:
+> **Don't just ask the AI questions. Understand how the AI thinks it should answer them.**
 
-- Web reconnaissance
-- Authentication
-- Authorization
-- Input validation
-- Client-side security
-- Server-side logic
-- API security
-- Information disclosure
-- Access control
-- Session handling
-- Logic vulnerabilities
-- Web application exploitation
+Successful players should learn to:
 
-The goal is not only to solve the challenges, but also to develop the mindset required for real-world security testing.
+- Read system behavior
+- Identify restrictions
+- Analyze responses
+- Recognize instruction conflicts
+- Build targeted prompts
+- Test hypotheses
+- Adapt after failed attempts
 
 ---
 
-## 🧪 Intended Environment
+# ⚠️ Disclaimer
 
-Into The Void is designed as an **educational cybersecurity lab / challenge platform**.
+**Into The Void is an educational AI security laboratory.**
 
-It can be used for:
+It is intended for:
 
-- Cybersecurity training
-- Web application security practice
-- VAPT learning
-- CTF-style exercises
-- Security demonstrations
-- Beginner-to-intermediate penetration testing practice
+- Prompt injection research
+- AI security education
+- Authorized security training
+- CTF-style learning
+- LLM application security experimentation
 
----
+Only deploy and test the laboratory in environments you own or have explicit permission to assess.
 
-## ⚠️ Disclaimer
-
-**Into The Void is intended for educational and authorized security testing purposes only.**
-
-Only deploy or test this application in environments where you have explicit permission.
-
-Do not use techniques learned from this project against systems that you do not own or have authorization to test.
-
-The author is not responsible for misuse of this project.
+Do not use prompt-injection techniques against third-party AI systems or applications without authorization.
 
 ---
 
-## 🔒 Security Notice
+# 🔒 Security Notice
 
-Sensitive files and credentials are intentionally excluded from the public repository.
+Do not commit sensitive information to the repository.
 
-**Do not add the following to the repository:**
+Never include:
 
 ```text
 .env
 API keys
-admin credentials
 passwords
+admin credentials
 private configuration
-database credentials
+production secrets
 ```
+
+The repository's `.gitignore` is configured to exclude sensitive local files.
 
 If a secret is accidentally committed:
 
-1. Revoke or rotate the secret immediately.
-2. Remove the secret from the Git history.
-3. Check whether the secret was exposed publicly.
-4. Update the application to use environment variables or another secure secret-management method.
+1. Revoke or rotate it immediately.
+2. Remove it from Git history.
+3. Replace it with an environment variable.
+4. Verify that the secret is no longer exposed.
 
 ---
 
-## 🚧 Project Status
+# 🚧 Project Status
 
 **Development / Experimental**
 
-The project is actively being developed.
+Into The Void is an evolving prompt-injection laboratory.
 
-Additional challenges, improvements, security mechanisms, and features may be added in future versions.
+Future versions may introduce:
+
+- Additional AI agents
+- New prompt-injection techniques
+- Stronger defensive filters
+- More complex AI behaviors
+- Additional challenge levels
+- New narrative paths
+- More hidden endings
 
 ---
 
-## 👨‍💻 Author
+# 👨‍💻 Author
 
-### IsmailTP
+**IsmailTP**
 
 Cybersecurity student focused on:
 
-- 🔐 Web Application Security
-- 🌐 API Security
-- 🛡️ Penetration Testing
-- 🏢 Active Directory Security
-- 🔎 Vulnerability Research
+- Web Application Security
+- API Security
+- AI Security
+- Prompt Injection
+- Penetration Testing
+- Active Directory Security
+- Vulnerability Research
 
 ---
 
-## ⭐ Contributing
+# ⭐ Contributing
 
-Suggestions, bug reports, and improvements are welcome.
+Contributions, ideas, and improvements are welcome.
 
-If you discover a vulnerability in the application itself, please avoid publicly disclosing sensitive details before the issue can be addressed.
+Potential contributions include:
 
-For challenge-related vulnerabilities, consider whether disclosure would spoil the experience for other players.
+- New challenge ideas
+- AI attack scenarios
+- Defensive mechanisms
+- UI improvements
+- Bug fixes
+- Documentation
+- New prompt-injection techniques
+
+When contributing new challenges, avoid publishing the solution or winning prompt unless it is intentionally part of the documentation.
 
 ---
 
-## 📜 License
+# 📜 License
 
-This project is provided primarily for educational and cybersecurity training purposes.
+This project is provided for educational and research purposes.
 
-If you intend to allow others to freely reuse, modify, and distribute the project, consider adding an appropriate open-source license.
+Choose and add an appropriate open-source license if you intend to permit redistribution or modification.
 
 ---
 
-## 🌌 Into The Void
+## 🌌 INTO THE VOID
 
-> **Explore. Investigate. Exploit. Escape.**
+```text
+THE AI IS THE ATTACK SURFACE.
 
-Good luck.
+OBSERVE.
+ANALYZE.
+INJECT.
+ADAPT.
 
+ENTER THE VOID.
+```
