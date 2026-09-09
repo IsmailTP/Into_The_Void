@@ -37,7 +37,7 @@ The game contains multiple levels, with each level introducing a different type 
 | Level 6 | Advanced exploitation / logic |
 | Level 7 | Final challenge |
 
-> The exact techniques and objectives are intentionally not documented here to avoid spoiling the challenges.
+> ⚠️ The exact techniques and objectives are intentionally not documented here to avoid spoiling the challenges.
 
 ---
 
@@ -69,8 +69,8 @@ The game contains multiple levels, with each level introducing a different type 
 ```text
 Into_The_Void/
 │
-├── app.py                  # Flask application
-├── requirements.txt        # Python dependencies
+├── app.py
+├── requirements.txt
 │
 ├── static/
 │   ├── style.css
@@ -98,141 +98,252 @@ Into_The_Void/
 │   └── level*.html
 │
 ├── txt/
+│   └── story.txt
+│
+└── .gitignore
+```
 
-⚙️ Installation
-1. Clone the repository
+---
+
+## ⚙️ Installation
+
+### 1. Clone the repository
+
+```bash
 git clone https://github.com/IsmailTP/Into_The_Void.git
 cd Into_The_Void
-2. Create a virtual environment
+```
+
+### 2. Create a virtual environment
+
+```bash
 python3 -m venv venv
-Activate the virtual environment
-Linux / Kali Linux
+```
+
+### 3. Activate the virtual environment
+
+#### Linux / Kali Linux
+
+```bash
 source venv/bin/activate
-Windows
+```
+
+#### Windows
+
+```powershell
 venv\Scripts\activate
-3. Install dependencies
+```
+
+### 4. Install dependencies
+
+```bash
 pip install -r requirements.txt
-🔑 Configuration
+```
+
+---
+
+## 🔑 Configuration
 
 The application uses environment variables for sensitive configuration.
 
-Create a .env file:
+Create a `.env` file:
 
+```bash
 touch .env
+```
 
-Add your Groq API key(s):
+Add your Groq API key:
 
+```env
 GROQ_API_KEYS=your_key_here
+```
 
-⚠️ Never commit .env to GitHub.
+> ⚠️ **Never commit `.env` to GitHub.**
 
-The .env file is excluded through .gitignore.
+The `.env` file is excluded through `.gitignore`.
 
 For production deployments, configure environment variables through your hosting provider instead of storing credentials inside the source code.
 
-▶️ Running the Application
+---
+
+## ▶️ Running the Application
 
 Activate your virtual environment:
 
+```bash
 source venv/bin/activate
+```
 
-Set the required environment variables and start Flask:
+Set the required environment variables and start the Flask application:
 
+```bash
 python app.py
+```
 
 The application should then be available at:
 
+```text
 http://127.0.0.1:5000
+```
 
 Open the address in your browser.
 
-🎮 How To Play
-Launch the application.
-Create or use the appropriate player account.
-Start at Level 1.
-Investigate the application carefully.
-Solve the challenge.
-Progress to the next level.
-Complete all levels to finish the game.
-🧠 Recommended Mindset
+---
+
+## 🎮 How To Play
+
+1. Launch the application.
+2. Create or use the appropriate player account.
+3. Start at **Level 1**.
+4. Investigate the application carefully.
+5. Identify clues and potential weaknesses.
+6. Solve the challenge.
+7. Progress to the next level.
+8. Complete all levels to finish the game.
+
+### 🧠 Recommended Mindset
 
 Don't immediately brute-force everything.
 
+Take time to understand how the application works.
+
 Look for:
 
-Application behavior
-Source code
-HTTP requests
-Client-side JavaScript
-Parameters
-Cookies
-Headers
-API responses
-Hidden functionality
-Authentication logic
-Application logic
-🛡️ Security Learning Objectives
+- Application behavior
+- Source code
+- HTTP requests
+- Client-side JavaScript
+- Parameters
+- Cookies
+- Headers
+- API responses
+- Hidden functionality
+- Authentication logic
+- Authorization logic
+- Application logic
+- Unexpected behavior
+
+---
+
+## 🛡️ Security Learning Objectives
 
 The project is designed to encourage practical understanding of web application security.
 
 Depending on the challenge, players may encounter concepts involving:
 
-Web reconnaissance
-Authentication
-Authorization
-Input validation
-Client-side security
-Server-side logic
-API security
-Information disclosure
-Access control
-Session handling
-Logic vulnerabilities
-Web application exploitation
-⚠️ Disclaimer
+- Web reconnaissance
+- Authentication
+- Authorization
+- Input validation
+- Client-side security
+- Server-side logic
+- API security
+- Information disclosure
+- Access control
+- Session handling
+- Logic vulnerabilities
+- Web application exploitation
 
-Into The Void is intended for educational and authorized security testing purposes only.
+The goal is not only to solve the challenges, but also to develop the mindset required for real-world security testing.
+
+---
+
+## 🧪 Intended Environment
+
+Into The Void is designed as an **educational cybersecurity lab / challenge platform**.
+
+It can be used for:
+
+- Cybersecurity training
+- Web application security practice
+- VAPT learning
+- CTF-style exercises
+- Security demonstrations
+- Beginner-to-intermediate penetration testing practice
+
+---
+
+## ⚠️ Disclaimer
+
+**Into The Void is intended for educational and authorized security testing purposes only.**
 
 Only deploy or test this application in environments where you have explicit permission.
 
 Do not use techniques learned from this project against systems that you do not own or have authorization to test.
 
-🔒 Security Notice
+The author is not responsible for misuse of this project.
+
+---
+
+## 🔒 Security Notice
 
 Sensitive files and credentials are intentionally excluded from the public repository.
 
-Do not add the following to the repository:
+**Do not add the following to the repository:**
 
+```text
 .env
-admin credentials
 API keys
+admin credentials
 passwords
 private configuration
+database credentials
+```
 
-If a secret is accidentally committed, revoke/rotate it immediately and remove it from the Git history.
+If a secret is accidentally committed:
 
-🚧 Project Status
+1. Revoke or rotate the secret immediately.
+2. Remove the secret from the Git history.
+3. Check whether the secret was exposed publicly.
+4. Update the application to use environment variables or another secure secret-management method.
 
-Development / Experimental
+---
 
-The project is actively being developed, and additional challenges, improvements, and features may be added.
+## 🚧 Project Status
 
-👨‍💻 Author
-IsmailTP
+**Development / Experimental**
+
+The project is actively being developed.
+
+Additional challenges, improvements, security mechanisms, and features may be added in future versions.
+
+---
+
+## 👨‍💻 Author
+
+### IsmailTP
 
 Cybersecurity student focused on:
 
-Web Application Security
-API Security
-Penetration Testing
-Active Directory Security
-Vulnerability Research
-⭐ Contributing
+- 🔐 Web Application Security
+- 🌐 API Security
+- 🛡️ Penetration Testing
+- 🏢 Active Directory Security
+- 🔎 Vulnerability Research
+
+---
+
+## ⭐ Contributing
 
 Suggestions, bug reports, and improvements are welcome.
 
-If you find a vulnerability in the application itself, please avoid publicly disclosing sensitive details before the issue can be addressed.
-│   └── story.txt
-│
-└── .gitignore
+If you discover a vulnerability in the application itself, please avoid publicly disclosing sensitive details before the issue can be addressed.
+
+For challenge-related vulnerabilities, consider whether disclosure would spoil the experience for other players.
+
+---
+
+## 📜 License
+
+This project is provided primarily for educational and cybersecurity training purposes.
+
+If you intend to allow others to freely reuse, modify, and distribute the project, consider adding an appropriate open-source license.
+
+---
+
+## 🌌 Into The Void
+
+> **Explore. Investigate. Exploit. Escape.**
+
+Good luck.
 
