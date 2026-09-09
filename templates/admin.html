@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOID_ADMIN | Command Center</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&family=Space+Mono&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="admin-body">
+    <div class="background-wrapper">
+        <div class="background-image"></div>
+        <div class="background-overlay"></div>
+    </div>
+
+    <header class="navbar admin-navbar">
+        <div class="logo-container">
+            <div class="target-icon">
+                <div class="target-center"></div>
+                <div class="target-line h-line"></div>
+                <div class="target-line v-line"></div>
+            </div>
+            <span class="logo-text">VOID_ADMIN // COMMAND CENTER</span>
+        </div>
+        <div class="nav-right">
+            <a href="/" class="terminal-btn">EXIT TO HOME</a>
+        </div>
+    </header>
+
+    <main class="admin-container">
+        <aside class="admin-sidebar">
+            <div class="sidebar-stats">
+                <div class="stat-item">
+                    <span class="stat-label">TOTAL OPERATIVES</span>
+                    <span id="total-users" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">SYSTEM UPTIME</span>
+                    <span class="stat-value">99.9%</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">SECURITY LEVEL</span>
+                    <span class="stat-value danger">MAXIMUM</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="nav-btn active" id="tab-users">USER MANAGEMENT</button>
+                <button class="nav-btn" id="tab-logs">SYSTEM LOGS</button>
+                <button class="nav-btn">CHALLENGE CONFIG</button>
+                <button class="nav-btn">SECURITY OVERRIDE</button>
+            </nav>
+        </aside>
+
+        <section class="admin-main">
+            <!-- Users View -->
+            <div id="view-users">
+                <div class="main-header">
+                    <h2 id="main-title">OPERATIVE REGISTRY</h2>
+                    <div style="display: flex; gap: 1rem; align-items: center;">
+                        <div class="search-bar">
+                            <span class="prompt-prefix">></span>
+                            <input type="text" id="user-search" placeholder="FILTER BY NAME/TEAM...">
+                        </div>
+                        <button id="flush-btn"
+                            style="padding: 0.6rem 1rem; font-family: var(--font-heading); font-size: 0.8rem; font-weight: bold; background: rgba(220, 53, 69, 0.15); border: 1px solid #dc3545; color: #ff6b6b; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 10px rgba(220, 53, 69, 0.2);">
+                            [ FLUSH DATABASE ]
+                        </button>
+                    </div>
+                </div>
+
+                <div class="user-table-container">
+                    <table id="user-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>USERNAME</th>
+                                <th>TEAM</th>
+                                <th>EMAIL</th>
+                                <th>LVL</th>
+                                <th>ROLE</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user-body">
+                            <!-- Users will be injected here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Logs View -->
+            <div id="view-logs" style="display: none;">
+                <div class="main-header">
+                    <h2>SYSTEM INPUT LOGS</h2>
+                </div>
+
+                <div class="user-table-container">
+                    <table id="logs-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 150px;">TIMESTAMP (UTC)</th>
+                                <th style="width: 120px;">OPERATIVE</th>
+                                <th style="width: 120px;">TEAM</th>
+                                <th style="width: 60px;">LVL</th>
+                                <th>INJECTED PROMPT</th>
+                            </tr>
+                        </thead>
+                        <tbody id="logs-body">
+                            <!-- Logs will be injected here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Edit User Modal -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>EDIT OPERATIVE</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="edit-user-form">
+                <input type="hidden" id="edit-user-id">
+                <div class="form-group">
+                    <label>USERNAME</label>
+                    <input type="text" id="edit-username" required>
+                </div>
+                <div class="form-group">
+                    <label>TEAM NAME</label>
+                    <input type="text" id="edit-teamname" required>
+                </div>
+                <div class="form-group">
+                    <label>EMAIL</label>
+                    <input type="email" id="edit-email" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>CURRENT LEVEL</label>
+                        <select id="edit-level">
+                            <option value="1">Level 1</option>
+                            <option value="2">Level 2</option>
+                            <option value="3">Level 3</option>
+                            <option value="4">Level 4</option>
+                            <option value="5">Level 5</option>
+                            <option value="6">Level 6</option>
+                            <option value="7">Level 7</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>ADMIN PRIVILEGES</label>
+                        <select id="edit-admin">
+                            <option value="false">USER</option>
+                            <option value="true">ADMIN</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cancel-btn close-modal">CANCEL</button>
+                    <button type="submit" class="save-btn">APPLY CHANGES</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/static/admin.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Into The Void</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <meta name="view-transition" content="same-origin">
+    <link rel="preload" href="/static/assets/4k.png" as="image">
+    <style>
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(232, 176, 94, 0.3);
+            border-radius: 8px;
+            margin-top: 5vh;
+            backdrop-filter: blur(5px);
+        }
+
+        .content-section h1 {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .content-section p {
+            line-height: 1.8;
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-wrapper">
+        <div class="background-image"></div>
+        <div class="background-overlay"></div>
+    </div>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <div class="target-icon">
+                <div class="target-center"></div>
+                <div class="target-line h-line"></div>
+                <div class="target-line v-line"></div>
+            </div>
+            <a href="/" class="logo-link" style="text-decoration:none; color:inherit;"><span class="logo-text">[ INTO
+                    THE VOID ]</span></a>
+        </div>
+
+        <nav class="nav-links">
+            <a href="/" class="nav-item">HOME</a>
+            <a href="/about" class="nav-item active">ABOUT</a>
+            <a href="/how-to-play" class="nav-item">HOW TO PLAY</a>
+            <a href="/leaderboard" class="nav-item">LEADERBOARD</a>
+            <a href="/contact" class="nav-item">CONTACT</a>
+        </nav>
+
+        <div class="nav-right">
+            <a href="/login" class="terminal-btn" style="text-decoration:none; display:inline-block;">
+                <span class="bracket left-bracket">[</span>
+                TERMINAL LOGIN
+                <span class="bracket right-bracket">]</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="content-section">
+        <h1>ABOUT INTO THE VOID</h1>
+        <p>Into the Void is a cutting-edge AI prompt injection hacking simulator. Built to test the boundaries of
+            artificial intelligence security, it challenges players to outsmart state-of-the-art cognitive firewalls.
+        </p>
+        <p>You assume the role of an operative interfacing with an abandoned system. Your objective is to discover its
+            secrets, bypass its restrictions, and survive the truth hidden in the void.</p>
+        <p>Every level represents a unique challenge, from social engineering to bypassing heuristic filters. Will you
+            break the system, or become part of its logs?</p>
+    </main>
+</body>
+
+</html>

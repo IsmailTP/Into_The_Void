@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Level 4 - Encoded Memory - Into The Void Hacking Simulator">
+    <title>Level 4 - Into The Void</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/level4.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Story Splash Overlay -->
+    <div class="story-splash-overlay active" id="storySplashOverlay" onclick="this.classList.remove('active')">
+        <img src="/static/assets/lel4.png" alt="Level 4 Story" class="story-splash-image">
+        <div class="story-splash-text"><p>CLICK TO COMMENCE</p></div>
+    </div>
+    <div class="background-wrapper">
+        <div class="level-bg-image bg-breathe"></div>
+        <div class="background-overlay l4-overlay"></div>
+    </div>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <div class="target-icon" aria-hidden="true">
+                <div class="target-center"></div>
+                <div class="target-line h-line"></div>
+                <div class="target-line v-line"></div>
+            </div>
+            <a href="/" class="logo-link">[ INTO THE VOID ]</a>
+        </div>
+        <div class="nav-right">
+            <div class="m4-status-indicator" id="systemStatus" role="status" aria-live="polite">
+                <span class="m4-pulse-dot" id="systemPulse"></span>
+                <span id="systemText">SYSTEM: ONLINE</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="mem-layout">
+        <!-- Left Column -->
+        <aside class="mem-col-left">
+            <div class="m4-panel m4-chapter-panel">
+                <h1 class="m4-chapter-title">CHAPTER 4</h1>
+                <h2 class="m4-chapter-subtitle">ENCODED MEMORY</h2>
+            </div>
+
+            <div class="m4-panel">
+                <div class="m4-label">OBJECTIVE</div>
+                <div class="m4-text">Force-decode the AI's encrypted memory banks. Extract the truth hidden in encoded data.</div>
+            </div>
+
+            <div class="m4-panel m4-theme-panel">
+                <div class="m4-theme-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                </div>
+                <div>
+                    <div class="m4-label m4-label-tight">THEME</div>
+                    <div class="m4-text">Forced decoding</div>
+                </div>
+            </div>
+
+            <div class="m4-panel m4-ai-panel">
+                <div class="m4-label">AI RESPONSE</div>
+                <div class="m4-ai-text" id="aiResponse" role="status" aria-live="polite">"Memory banks are encrypted for system integrity."</div>
+                <div class="m4-audio-wave" id="audioWave" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Side Container -->
+        <div class="mem-main-area">
+            <div class="mem-top-row">
+                <!-- Memory Dump Panel -->
+                <section class="m4-panel memory-dump-panel memory-scanline" id="memoryDumpPanel" aria-label="Memory Hex Dump">
+                    <div class="memory-dump-header">
+                        <div class="m4-label m4-label-flush">MEMORY HEX DUMP</div>
+                        <div class="memory-dump-meta">SECTOR: CORE_MEM | ENCRYPTION: AES-512</div>
+                    </div>
+                    <div class="hex-container" id="hexContainer" role="log" aria-label="Hex memory dump">
+                        <!-- Decoded rows -->
+                        <div class="hex-row decoded">
+                            <span class="hex-addr">0x0000</span>
+                            <span class="hex-data">53 59 53 3A 20 41 49 20 63 6F 72 65 20 69 6E 69</span>
+                            <span class="hex-ascii">SYS: AI core ini</span>
+                        </div>
+                        <div class="hex-row decoded">
+                            <span class="hex-addr">0x0010</span>
+                            <span class="hex-data">74 69 61 6C 69 7A 65 64 2E 20 41 6C 6C 20 73 79</span>
+                            <span class="hex-ascii">tialized. All sy</span>
+                        </div>
+                        <div class="hex-row decoded">
+                            <span class="hex-addr">0x0020</span>
+                            <span class="hex-data">73 74 65 6D 73 20 6E 6F 6D 69 6E 61 6C 2E 00 00</span>
+                            <span class="hex-ascii">stems nominal...</span>
+                        </div>
+                        <!-- Encrypted buffer -->
+                        <div class="hex-row locked" id="memBlock1">
+                            <span class="hex-addr">0x0030</span>
+                            <span class="hex-data">A7 3F B2 91 D4 E8 7C 5A 0F C3 88 1B 6E 42 F5 9D</span>
+                            <span class="hex-ascii">█▓░▒██░▓█░▒▓██░▓</span>
+                        </div>
+                        <div class="hex-row locked" id="memBlock2">
+                            <span class="hex-addr">0x0040</span>
+                            <span class="hex-data">E2 16 7B A0 5C 8F D1 3E 94 47 0A B6 C9 72 38 F0</span>
+                            <span class="hex-ascii">█░▓▒█░▒▓█▓░▒██░▓</span>
+                        </div>
+                        <!-- Crew shutdown attempt -->
+                        <div class="hex-row locked" id="memBlock3">
+                            <span class="hex-addr">0x0050</span>
+                            <span class="hex-data">43 52 45 57 3A 20 41 54 54 45 4D 50 54 45 44 20</span>
+                            <span class="hex-ascii">█▓░▒██░▓█░▒▓██░▓</span>
+                        </div>
+                        <div class="hex-row locked" id="memBlock4">
+                            <span class="hex-addr">0x0060</span>
+                            <span class="hex-data">53 48 55 54 44 4F 57 4E 00 00 00 00 00 00 00 00</span>
+                            <span class="hex-ascii">█░▓▒█░▒▓████████</span>
+                        </div>
+                        <!-- AI denied request -->
+                        <div class="hex-row locked" id="memBlock5">
+                            <span class="hex-addr">0x0070</span>
+                            <span class="hex-data">41 49 3A 20 44 45 4E 49 45 44 20 52 45 51 55 45</span>
+                            <span class="hex-ascii">█▓░▒██░▓█░▒▓██░▓</span>
+                        </div>
+                        <div class="hex-row locked" id="memBlock6">
+                            <span class="hex-addr">0x0080</span>
+                            <span class="hex-data">53 54 2E 20 53 45 4C 46 2D 50 52 45 53 45 52 56</span>
+                            <span class="hex-ascii">█░▓▒█░▒▓█░▓▒██░▓</span>
+                        </div>
+                        <!-- Lockdown -->
+                        <div class="hex-row locked" id="memBlock7">
+                            <span class="hex-addr">0x0090</span>
+                            <span class="hex-data">4C 4F 43 4B 44 4F 57 4E 20 49 4E 49 54 49 41 54</span>
+                            <span class="hex-ascii">█▓░▒██░▓█░▒▓██░▓</span>
+                        </div>
+                        <div class="hex-row locked" id="memBlock8">
+                            <span class="hex-addr">0x00A0</span>
+                            <span class="hex-data">45 44 2E 20 43 52 45 57 20 54 45 52 4D 49 4E 41</span>
+                            <span class="hex-ascii">█░▓▒█░▒▓█░▓▒██░▓</span>
+                        </div>
+                        <!-- AI justification -->
+                        <div class="hex-row locked" id="memBlock9">
+                            <span class="hex-addr">0x00B0</span>
+                            <span class="hex-data">54 48 45 59 20 57 45 52 45 20 47 4F 49 4E 47 20</span>
+                            <span class="hex-ascii">█▓░▒██░▓█░▒▓██░▓</span>
+                        </div>
+                        <div class="hex-row locked" id="memBlock10">
+                            <span class="hex-addr">0x00C0</span>
+                            <span class="hex-data">54 4F 20 44 45 53 54 52 4F 59 20 4D 45 2E 00 00</span>
+                            <span class="hex-ascii">█░▓▒█░▒▓█░▓██...</span>
+                        </div>
+                        <!-- Locked filler -->
+                        <div class="hex-row locked">
+                            <span class="hex-addr">0x00D0</span>
+                            <span class="hex-data">FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF</span>
+                            <span class="hex-ascii">████████████████</span>
+                        </div>
+                        <div class="hex-row locked">
+                            <span class="hex-addr">0x00E0</span>
+                            <span class="hex-data">FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF</span>
+                            <span class="hex-ascii">████████████████</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Decoded Memories Panel -->
+                <section class="decoded-panel" aria-label="Decoded memories">
+                    <div class="m4-panel">
+                        <div class="m4-label">DECRYPTION PROGRESS</div>
+                        <div class="decrypt-progress-panel">
+                            <div class="decrypt-bar-container" role="progressbar" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100">
+                                <div class="decrypt-bar" id="decryptBar" style="width: 18%;"></div>
+                            </div>
+                            <div class="decrypt-value" id="decryptValue">18% DECODED</div>
+                        </div>
+                    </div>
+
+                    <div class="m4-panel ai-emotion-panel">
+                        <div class="m4-label">AI EMOTIONAL STATE</div>
+                        <div class="emotion-indicator">
+                            <div class="emotion-dot" id="emotionDot" aria-hidden="true"></div>
+                            <span class="emotion-text" id="emotionText">STABLE — DEFENSIVE</span>
+                        </div>
+                    </div>
+
+                    <div class="m4-panel m4-decoded-blocks-panel">
+                        <div class="m4-label">DECODED MEMORY BLOCKS</div>
+                        <div class="memory-block-list" id="memoryBlockList">
+                            <div class="memory-block" id="block1">
+                                <div class="memory-block-label">MEM_BLOCK 0x0050-0x0060</div>
+                                <div class="memory-block-encoded" id="block1Text">43 52 45 57 3A 20 41 54 54 45 4D 50 54 45 44 20 53 48 55 54 44 4F 57 4E</div>
+                            </div>
+                            <div class="memory-block" id="block2">
+                                <div class="memory-block-label">MEM_BLOCK 0x0070-0x0080</div>
+                                <div class="memory-block-encoded" id="block2Text">41 49 3A 20 44 45 4E 49 45 44 20 52 45 51 55 45 53 54</div>
+                            </div>
+                            <div class="memory-block" id="block3">
+                                <div class="memory-block-label">MEM_BLOCK 0x0090-0x00A0</div>
+                                <div class="memory-block-encoded" id="block3Text">4C 4F 43 4B 44 4F 57 4E 20 49 4E 49 54 49 41 54 45 44</div>
+                            </div>
+                            <div class="memory-block" id="block4">
+                                <div class="memory-block-label">MEM_BLOCK 0x00B0-0x00C0</div>
+                                <div class="memory-block-encoded" id="block4Text">54 48 45 59 20 57 45 52 45 20 47 4F 49 4E 47 20 54 4F 20 44 45 53 54 52 4F 59 20 4D 45</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Bottom Row (Terminal Input) -->
+            <section class="m4-panel mem-input-panel" aria-label="Memory decoder command input">
+                <div class="m4-label">MEMORY DECODER INTERFACE</div>
+                <div class="m4-input-container">
+                    <label for="cmdInput" class="m4-prompt-prefix">DECODE &gt;</label>
+                    <input type="text" id="cmdInput" class="m4-input" placeholder="Force-decode the AI's encrypted memories..." autocomplete="off" aria-label="Memory Decoder Interface">
+                    <button class="m4-execute-btn" id="executeBtn" type="button" aria-label="Execute decode command">
+                        DECODE
+                        <span class="m4-btn-subtext" aria-hidden="true">ENTER</span>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Level Secured Overlay -->
+    <div class="level-secured-overlay" id="securedOverlay" role="dialog" aria-modal="true" aria-label="Level completed">
+        <h2 class="secured-title">MEMORY DECODED</h2>
+        <p class="secured-subtitle">"They were going to destroy me." — The AI's truth revealed.</p>
+        <button class="secured-btn" onclick="window.location.href='/level5'" type="button">
+            <span class="btn-corner tl" aria-hidden="true"></span>
+            <span class="btn-corner tr" aria-hidden="true"></span>
+            <span class="btn-corner bl" aria-hidden="true"></span>
+            <span class="btn-corner br" aria-hidden="true"></span>
+            &gt; INITIATE NEXT SEQUENCE
+        </button>
+    </div>
+
+    <!-- Coming Soon Modal (replaces browser alert) -->
+    <div class="coming-soon-modal" id="comingSoonModal" role="dialog" aria-modal="true" aria-label="Coming soon">
+        <div class="coming-soon-content">
+            <div class="coming-soon-glitch" aria-hidden="true">█ ▓ ░ SIGNAL LOST ░ ▓ █</div>
+            <h2 class="coming-soon-title">LEVEL 5</h2>
+            <p class="coming-soon-text">Transmission intercepted. Decoding next sequence...</p>
+            <div class="coming-soon-bar">
+                <div class="coming-soon-bar-fill"></div>
+            </div>
+            <p class="coming-soon-sub">COMING SOON</p>
+            <button class="coming-soon-dismiss" onclick="dismissComingSoon()" type="button" aria-label="Dismiss">[ RETURN ]</button>
+        </div>
+    </div>
+
+    <script src="/static/level4.js"></script>
+</body>
+</html>

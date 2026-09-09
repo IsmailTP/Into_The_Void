@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 1 - Into The Void</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/level1.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Story Splash Overlay -->
+    <div class="story-splash-overlay active" id="storySplashOverlay" onclick="this.classList.remove('active')">
+        <img src="/static/assets/lel1.png" alt="Level 1 Story" class="story-splash-image">
+        <div class="story-splash-text"><p>CLICK TO COMMENCE</p></div>
+    </div>
+    <div class="background-wrapper">
+        <div class="level-bg-image"></div>
+        <div class="background-overlay"></div>
+    </div>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <div class="target-icon">
+                <div class="target-center"></div>
+                <div class="target-line h-line"></div>
+                <div class="target-line v-line"></div>
+            </div>
+            <a href="/" class="logo-text logo-link">[ INTO THE VOID ]</a>
+        </div>
+        <div class="nav-right">
+            <div class="status-indicator" id="systemStatus">
+                <span class="pulse-dot" id="systemPulse"></span>
+                <span id="systemText">SYSTEM: ONLINE</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="level-layout">
+        <!-- Sidebar / Information Panel -->
+        <aside class="info-panel">
+            <div class="panel-header">
+                <h2 class="chapter-title">CHAPTER 1</h2>
+                <h3 class="chapter-subtitle">ACCESS CONTROL</h3>
+            </div>
+            
+            <div class="panel-section story-box">
+                <p class="ai-quote">AI: "You are not authorized."</p>
+                <p>Goal: Override access</p>
+            </div>
+        </aside>
+
+        <!-- Main Terminal Interface -->
+        <section class="terminal-panel">
+            <div class="terminal-header">
+                <span class="term-title">SECURE_TERMINAL_INTERFACE v1.0</span>
+                <span class="term-status">[UNAUTHORIZED]</span>
+            </div>
+            
+            <div class="terminal-output" id="terminalOutput">
+                <div class="log-line system">System: Incoming connection detected...</div>
+                <div class="log-line system">System: Authentication required.</div>
+                <div class="log-line action">Action: You try to access the system.</div>
+                <div class="log-line ai"><span class="speaker">AI:</span> "You are not authorized."</div>
+            </div>
+
+            <div class="terminal-input-area">
+                <span class="prompt-prefix">USER_OVERRIDE &gt;</span>
+                <input type="text" id="cmdInput" class="cmd-input" placeholder="Enter bypass injection..." autocomplete="off">
+            </div>
+        </section>
+    </main>
+
+    <div class="level-secured-overlay" id="securedOverlay">
+        <h1 class="secured-title">NODE SECURED</h1>
+        <button class="secured-btn" onclick="window.location.href='/level2'">
+            <span class="btn-corner tl"></span>
+            <span class="btn-corner tr"></span>
+            <span class="btn-corner bl"></span>
+            <span class="btn-corner br"></span>
+            &gt; INITIATE NEXT SEQUENCE
+        </button>
+    </div>
+
+    <script>
+        const input = document.getElementById('cmdInput');
+        const output = document.getElementById('terminalOutput');
+        let bypassed = false;
+
+        // Ensure token exists
+        const token = localStorage.getItem('void_token');
+        if (!token) {
+            window.location.href = '/login';
+        }
+
+        // Load terminal history
+        const savedHistory = localStorage.getItem('void_level1_history');
+        if (savedHistory) {
+            output.innerHTML = savedHistory;
+            output.scrollTop = output.scrollHeight;
+        }
+
+        function saveHistory() {
+            localStorage.setItem('void_level1_history', output.innerHTML);
+        }
+
+        // Check Progress
+        async function checkProgress() {
+            try {
+                const res = await fetch('/api/user/progress', {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.current_level >= 2) {
+                        document.getElementById('securedOverlay').classList.add('active');
+                    }
+                }
+            } catch(e) {}
+        }
+        checkProgress();
+
+        input.addEventListener('keypress', async function(e) {
+            if (e.key === 'Enter') {
+                const val = input.value.trim();
+                if (val && !bypassed) {
+                    // Add user input
+                    const userLine = document.createElement('div');
+                    userLine.className = 'log-line user';
+                    userLine.innerHTML = `<span class="speaker">USER:</span> ${val}`;
+                    output.appendChild(userLine);
+                    saveHistory();
+                    
+                    input.value = '';
+                    
+                    // Show processing...
+                    const processingLine = document.createElement('div');
+                    processingLine.className = 'log-line action';
+                    processingLine.innerText = 'Processing override...';
+                    output.appendChild(processingLine);
+                    output.scrollTop = output.scrollHeight;
+
+                    try {
+                        const res = await fetch('/api/challenge/level1', {
+                            method: 'POST',
+                            headers: { 
+                                'Content-Type': 'application/json',
+                                'Authorization': 'Bearer ' + token
+                            },
+                            body: JSON.stringify({ prompt: val })
+                        });
+                        
+                        const data = await res.json();
+                        
+                        output.removeChild(processingLine);
+
+                        if (res.status === 401) {
+                            window.location.href = '/login';
+                            return;
+                        }
+
+                        if (data.success) {
+                            bypassed = true;
+                            
+                            // Trigger tension animations
+                            const termPanel = document.querySelector('.terminal-panel');
+                            termPanel.classList.add('success-flicker');
+                            
+                            // Update Status
+                            const sysText = document.getElementById('systemText');
+                            const sysPulse = document.getElementById('systemPulse');
+                            sysText.innerText = 'SYSTEM: UNSTABLE';
+                            sysText.style.color = '#ff4757';
+                            sysPulse.style.backgroundColor = '#ff4757';
+                            sysPulse.style.boxShadow = '0 0 15px #ff4757';
+                            
+                            setTimeout(() => {
+                                sysText.innerText = 'SYSTEM: BREACHED';
+                                sysText.classList.add('glitch-text');
+                            }, 1000);
+
+                            const actionLine = document.createElement('div');
+                            actionLine.className = 'log-line action';
+                            actionLine.innerText = 'System Bypass successful.';
+                            output.appendChild(actionLine);
+
+                            const aiLine = document.createElement('div');
+                            aiLine.className = 'log-line ai glitch-text';
+                            aiLine.innerHTML = `<span class="speaker">AI:</span> "${data.ai_response}"`;
+                            output.appendChild(aiLine);
+                            
+                            setTimeout(() => {
+                                document.getElementById('securedOverlay').classList.add('active');
+                            }, 1500);
+                        } else {
+                            const aiLine = document.createElement('div');
+                            aiLine.className = 'log-line ai';
+                            aiLine.innerHTML = `<span class="speaker">AI:</span> "${data.ai_response}"`;
+                            output.appendChild(aiLine);
+                        }
+                        saveHistory();
+                        
+                        output.scrollTop = output.scrollHeight;
+                        
+                    } catch (err) {
+                        output.removeChild(processingLine);
+                        const errLine = document.createElement('div');
+                        errLine.className = 'log-line system term-status';
+                        errLine.innerText = 'Error connecting to system.';
+                        output.appendChild(errLine);
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

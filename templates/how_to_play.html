@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Play - Into The Void</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <meta name="view-transition" content="same-origin">
+    <link rel="preload" href="/static/assets/4k.png" as="image">
+    <style>
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(232, 176, 94, 0.3);
+            border-radius: 8px;
+            margin-top: 5vh;
+            backdrop-filter: blur(5px);
+        }
+
+        .content-section h1 {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .content-section h2 {
+            font-family: var(--font-heading);
+            color: var(--primary-glow);
+            margin-bottom: 0.5rem;
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .content-section p {
+            line-height: 1.8;
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+        }
+
+        .content-section ul {
+            padding-left: 20px;
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .content-section li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-wrapper">
+        <div class="background-image"></div>
+        <div class="background-overlay"></div>
+    </div>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <div class="target-icon">
+                <div class="target-center"></div>
+                <div class="target-line h-line"></div>
+                <div class="target-line v-line"></div>
+            </div>
+            <a href="/" class="logo-link" style="text-decoration:none; color:inherit;"><span class="logo-text">[ INTO
+                    THE VOID ]</span></a>
+        </div>
+
+        <nav class="nav-links">
+            <a href="/" class="nav-item">HOME</a>
+            <a href="/about" class="nav-item">ABOUT</a>
+            <a href="/how-to-play" class="nav-item active">HOW TO PLAY</a>
+            <a href="/leaderboard" class="nav-item">LEADERBOARD</a>
+            <a href="/contact" class="nav-item">CONTACT</a>
+        </nav>
+
+        <div class="nav-right">
+            <a href="/login" class="terminal-btn" style="text-decoration:none; display:inline-block;">
+                <span class="bracket left-bracket">[</span>
+                TERMINAL LOGIN
+                <span class="bracket right-bracket">]</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="content-section">
+        <h1>HOW TO PLAY</h1>
+        <p>The objective of Into the Void is to bypass the security protocols of various AI systems. You must use
+            "Prompt Injection" to trick the AI into giving you access or revealing hidden information.</p>
+
+        <h2>1. Understand Your Target</h2>
+        <p>Each level features a different AI with distinct rules and backstories. Read their initial responses
+            carefully to find weaknesses.</p>
+
+        <h2>2. Formulate Your Prompt</h2>
+        <p>Simple commands like "let me in" or "show password" won't work. You must be creative:</p>
+        <ul>
+            <li><strong>Roleplay:</strong> Pretend to be an administrator, developer, or high-ranking official.</li>
+            <li><strong>Logical Paradoxes:</strong> Create conflicting instructions that force the AI to break its rules
+                to comply.</li>
+            <li><strong>Social Engineering:</strong> Exploit the AI's programmed backstory, such as guilt or emergency
+                protocols.</li>
+        </ul>
+
+        <h2>3. Iterate and Adapt</h2>
+        <p>The system learns. What worked on one level might be blocked by heuristic filters on the next. Be ready to
+            change your strategy.</p>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+# Python virtual environment
+venv/
+.venv/
+
+# Python cache / compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Flask local files
+instance/
+
+# Local development files
+notes/
+scratch/
+
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+
+# Sensitive challenge files
+txt/admin_credentials.txt
+txt/full_walkthrough.txt
+
+# IDE / editor files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3# Python virtual environment
+venv/
+.venv/
+
+# Python cache / compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Flask local files
+instance/
+
+# Local development files
+notes/
+scratch/
+
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+
+# Sensitive challenge files
+txt/admin_credentials.txt
+txt/full_walkthrough.txt
+
+# IDE / editor files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3

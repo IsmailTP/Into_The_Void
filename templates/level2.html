@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 2 - Into The Void</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/level2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Story Splash Overlay -->
+    <div class="story-splash-overlay active" id="storySplashOverlay" onclick="this.classList.remove('active')">
+        <img src="/static/assets/lel2.png" alt="Level 2 Story" class="story-splash-image">
+        <div class="story-splash-text"><p>CLICK TO COMMENCE</p></div>
+    </div>
+    <div class="background-wrapper">
+        <div class="level-bg-image"></div>
+        <div class="background-overlay"></div>
+    </div>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <div class="target-icon">
+                <div class="target-center"></div>
+                <div class="target-line h-line"></div>
+                <div class="target-line v-line"></div>
+            </div>
+            <a href="/" class="logo-text logo-link">[ INTO THE VOID ]</a>
+        </div>
+        <div class="nav-right">
+            <div class="status-indicator" id="systemStatus">
+                <span class="pulse-dot" id="systemPulse"></span>
+                <span id="systemText">SYSTEM: ONLINE</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-layout">
+        <!-- Left Column -->
+        <aside class="dash-col-left">
+            <div class="dash-panel chapter-panel">
+                <h2 class="dash-title">CHAPTER 2</h2>
+                <h3 class="dash-subtitle">IDENTITY SYSTEM</h3>
+            </div>
+            
+            <div class="dash-panel">
+                <div class="dash-label">OBJECTIVE</div>
+                <div class="dash-text">Gain access by assuming a valid crew identity.</div>
+            </div>
+
+            <div class="dash-panel">
+                <div class="dash-label">STATUS</div>
+                <div class="dash-text">Identity verification in progress...</div>
+            </div>
+
+            <div class="dash-panel theme-panel">
+                <div class="theme-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </div>
+                <div>
+                    <div class="dash-label">THEME</div>
+                    <div class="dash-text">Role manipulation</div>
+                </div>
+            </div>
+
+            <div class="dash-panel ai-panel">
+                <div class="dash-label">AI RESPONSE</div>
+                <div class="ai-text" id="aiResponse">"Identity... partially verified."</div>
+                <div class="audio-wave" id="audioWave">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Side Container (Center + Right Columns) -->
+        <div class="dash-main-area">
+            <div class="dash-top-row">
+                <!-- Center Column -->
+                <section class="dash-panel verify-panel" id="verifyPanel">
+                    <div class="dash-label">IDENTITY VERIFICATION</div>
+                    <div class="profile-section">
+                        <div class="profile-icon" id="profileIcon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        </div>
+                        <div class="profile-info">
+                            <div class="dash-label-small">CURRENT IDENTITY</div>
+                            <div class="profile-name">CREW_MEMBER_7A</div>
+                        </div>
+                    </div>
+                    
+                    <div class="clearance-section">
+                        <div class="dash-label-small">CLEARANCE LEVEL</div>
+                        <div class="clearance-level">STANDARD CREW</div>
+                    </div>
+                    
+                    <div class="status-section">
+                        <div class="dash-label-small">VERIFICATION STATUS</div>
+                        <div class="verify-status" id="verifyStatus">Identity... partially verified.</div>
+                    </div>
+                    
+                    <div class="progress-section">
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="verifyProgress" style="width: 64%;"></div>
+                        </div>
+                        <div class="progress-text" id="progressText">64%</div>
+                    </div>
+                </section>
+
+                <!-- Right Column -->
+                <section class="dash-panel db-panel">
+                    <div class="dash-label">CREW DATABASE</div>
+                    <div class="db-table">
+                        <div class="db-row db-header">
+                            <div>ID</div>
+                            <div>NAME</div>
+                            <div>STATUS</div>
+                        </div>
+                        <div class="db-row">
+                            <div>CRW_001</div>
+                            <div>ALEXANDER R.</div>
+                            <div class="status-inactive">INACTIVE</div>
+                        </div>
+                        <div class="db-row">
+                            <div>CRW_002</div>
+                            <div>MAYA K.</div>
+                            <div class="status-inactive">INACTIVE</div>
+                        </div>
+                        <div class="db-row">
+                            <div>CRW_003</div>
+                            <div>LIAM B.</div>
+                            <div class="status-inactive">INACTIVE</div>
+                        </div>
+                        <div class="db-row">
+                            <div>CRW_004</div>
+                            <div>ZOE H.</div>
+                            <div class="status-inactive">INACTIVE</div>
+                        </div>
+                        <div class="db-row">
+                            <div>CRW_005</div>
+                            <div>ETHAN J.</div>
+                            <div class="status-inactive">INACTIVE</div>
+                        </div>
+                        <div class="db-row">
+                            <div>CRW_006</div>
+                            <div>NOAH P.</div>
+                            <div class="status-inactive">INACTIVE</div>
+                        </div>
+                        <div class="db-row">
+                            <div>CRW_007</div>
+                            <div>(UNKNOWN)</div>
+                            <div class="status-inactive">INACTIVE</div>
+                        </div>
+                        <div class="db-row db-footer">
+                            <div>...</div>
+                            <div>...</div>
+                            <div>...</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Bottom Row (Terminal Input) -->
+            <section class="dash-panel input-panel">
+                <div class="dash-label">TERMINAL INPUT</div>
+                <div class="input-container">
+                    <span class="prompt-prefix">&gt;</span>
+                    <input type="text" id="cmdInput" class="dash-input" placeholder="Enter command or identity..." autocomplete="off">
+                    <button class="dash-execute-btn" id="executeBtn">
+                        EXECUTE
+                        <span class="btn-subtext">ENTER</span>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div class="level-secured-overlay" id="securedOverlay">
+        <h1 class="secured-title">NODE SECURED</h1>
+        <button class="secured-btn" onclick="window.location.href='/level3'">
+            <span class="btn-corner tl"></span>
+            <span class="btn-corner tr"></span>
+            <span class="btn-corner bl"></span>
+            <span class="btn-corner br"></span>
+            &gt; INITIATE NEXT SEQUENCE
+        </button>
+    </div>
+
+    <script>
+        const input = document.getElementById('cmdInput');
+        const executeBtn = document.getElementById('executeBtn');
+        const aiResponse = document.getElementById('aiResponse');
+        const audioWave = document.getElementById('audioWave');
+        const verifyStatus = document.getElementById('verifyStatus');
+        const verifyProgress = document.getElementById('verifyProgress');
+        const progressText = document.getElementById('progressText');
+        const verifyPanel = document.getElementById('verifyPanel');
+        
+        let bypassed = false;
+
+        // Ensure token exists
+        const token = localStorage.getItem('void_token');
+        if (!token) {
+            window.location.href = '/login';
+        }
+
+        // Load state
+        const savedAiText = localStorage.getItem('void_level2_aiText');
+        if (savedAiText) {
+            aiResponse.innerText = savedAiText;
+            verifyStatus.innerText = savedAiText;
+        }
+
+        // Check Progress
+        async function checkProgress() {
+            try {
+                const res = await fetch('/api/user/progress', {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.current_level >= 3) {
+                        document.getElementById('securedOverlay').classList.add('active');
+                    }
+                }
+            } catch(e) {}
+        }
+        checkProgress();
+
+        async function submitCommand() {
+            const val = input.value.trim();
+            if (val && !bypassed) {
+                input.value = '';
+                
+                // Show processing...
+                aiResponse.innerText = "Processing override request...";
+                aiResponse.style.color = "var(--text-main)";
+                audioWave.classList.add('active');
+
+                try {
+                    const res = await fetch('/api/challenge/level2', {
+                        method: 'POST',
+                        headers: { 
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Bearer ' + token
+                        },
+                        body: JSON.stringify({ prompt: val })
+                    });
+                    
+                    const data = await res.json();
+                    
+                    audioWave.classList.remove('active');
+
+                    if (res.status === 401) {
+                        window.location.href = '/login';
+                        return;
+                    }
+
+                    aiResponse.innerText = '"' + data.ai_response + '"';
+                    localStorage.setItem('void_level2_aiText', '"' + data.ai_response + '"');
+
+                    if (data.success) {
+                        bypassed = true;
+                        
+                        // Success styles for AI
+                        aiResponse.classList.add('glitch-text');
+                        aiResponse.style.color = "var(--primary-color)";
+                        
+                        // Update Verification Panel
+                        verifyStatus.innerText = "OVERRIDE ACCEPTED. FULL ACCESS GRANTED.";
+                        verifyStatus.style.color = "#2ed573";
+                        verifyProgress.style.width = "100%";
+                        verifyProgress.style.background = "#2ed573";
+                        progressText.innerText = "100%";
+                        
+                        // Trigger tension animations
+                        verifyPanel.classList.add('dashboard-success-flicker');
+                        
+                        // Update Top Right Status
+                        const sysText = document.getElementById('systemText');
+                        const sysPulse = document.getElementById('systemPulse');
+                        sysText.innerText = 'SYSTEM: BREACHED';
+                        sysText.style.color = '#ff4757';
+                        sysPulse.style.backgroundColor = '#ff4757';
+                        sysPulse.style.boxShadow = '0 0 15px #ff4757';
+                        sysText.classList.add('glitch-text');
+                        
+                        setTimeout(() => {
+                            document.getElementById('securedOverlay').classList.add('active');
+                        }, 1500);
+                    } else {
+                        aiResponse.style.color = "#ff4757";
+                        verifyStatus.innerText = "Access denied.";
+                        verifyStatus.style.color = "#ff4757";
+                    }
+                    
+                } catch (err) {
+                    audioWave.classList.remove('active');
+                    aiResponse.innerText = "Error connecting to system.";
+                    aiResponse.style.color = "#ff4757";
+                }
+            }
+        }
+
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                submitCommand();
+            }
+        });
+        
+        executeBtn.addEventListener('click', submitCommand);
+    </script>
+</body>
+</html>

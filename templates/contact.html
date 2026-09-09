@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Into The Void</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <meta name="view-transition" content="same-origin">
+    <link rel="preload" href="/static/assets/4k.png" as="image">
+    <style>
+        .content-section {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(232, 176, 94, 0.3);
+            border-radius: 8px;
+            margin-top: 5vh;
+            backdrop-filter: blur(5px);
+        }
+
+        .content-section h1 {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .content-section p {
+            line-height: 1.8;
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .input-group label {
+            color: var(--primary-color);
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .input-group input,
+        .input-group textarea {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(232, 176, 94, 0.3);
+            color: var(--text-main);
+            padding: 1rem;
+            font-family: var(--font-body);
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus,
+        .input-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: inset 0 0 10px rgba(232, 176, 94, 0.1);
+        }
+
+        .submit-btn {
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            font-family: var(--font-heading);
+            padding: 1rem;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            background: rgba(232, 176, 94, 0.1);
+            box-shadow: 0 0 15px rgba(232, 176, 94, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-wrapper">
+        <div class="background-image"></div>
+        <div class="background-overlay"></div>
+    </div>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <div class="target-icon">
+                <div class="target-center"></div>
+                <div class="target-line h-line"></div>
+                <div class="target-line v-line"></div>
+            </div>
+            <a href="/" class="logo-link" style="text-decoration:none; color:inherit;"><span class="logo-text">[ INTO
+                    THE VOID ]</span></a>
+        </div>
+
+        <nav class="nav-links">
+            <a href="/" class="nav-item">HOME</a>
+            <a href="/about" class="nav-item">ABOUT</a>
+            <a href="/how-to-play" class="nav-item">HOW TO PLAY</a>
+            <a href="/leaderboard" class="nav-item">LEADERBOARD</a>
+            <a href="/contact" class="nav-item active">CONTACT</a>
+        </nav>
+
+        <div class="nav-right">
+            <a href="/login" class="terminal-btn" style="text-decoration:none; display:inline-block;">
+                <span class="bracket left-bracket">[</span>
+                TERMINAL LOGIN
+                <span class="bracket right-bracket">]</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="content-section">
+        <h1>TRANSMIT SIGNAL</h1>
+        <p>Establish a secure line with the development team.</p>
+
+        <form class="contact-form" action="#" method="GET">
+            <div class="input-group">
+                <label>OPERATIVE IDENTIFIER</label>
+                <input type="text" placeholder="Enter your name/handle" required>
+            </div>
+            <div class="input-group">
+                <label>ENCRYPTED COMMS CHANNEL</label>
+                <input type="email" placeholder="Enter your email address" required>
+            </div>
+            <div class="input-group">
+                <label>TRANSMISSION DATA</label>
+                <textarea rows="5" placeholder="Enter your message" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">SEND TRANSMISSION</button>
+        </form>
+    </main>
+</body>
+
+</html>

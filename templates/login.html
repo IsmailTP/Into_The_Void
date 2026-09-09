@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Access - Into The Void</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-wrapper">
+        <div class="background-image"></div>
+        <div class="background-overlay"></div>
+    </div>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <div class="target-icon">
+                <div class="target-center"></div>
+                <div class="target-line h-line"></div>
+                <div class="target-line v-line"></div>
+            </div>
+            <a href="/" class="logo-text logo-link">[ INTO THE VOID ]</a>
+        </div>
+        <div class="nav-right">
+            <a href="/" class="terminal-btn" style="text-decoration:none; display:inline-block;">
+                <span class="bracket left-bracket">[</span>
+                ABORT / RETURN
+                <span class="bracket right-bracket">]</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="auth-section">
+        <div class="auth-container">
+            <div class="auth-tabs">
+                <button class="auth-tab {% if active_tab == 'login' %}active{% endif %}" onclick="switchTab('login')">LOGIN</button>
+                <button class="auth-tab {% if active_tab == 'register' %}active{% endif %}" onclick="switchTab('register')">REGISTER</button>
+            </div>
+
+            <div id="login-form" class="auth-form {% if active_tab == 'login' %}active{% endif %}">
+                <h2 class="form-title">SYSTEM_LOGIN</h2>
+                <div id="login-error" style="color: red; margin-bottom: 10px; font-family: var(--font-body); font-size: 0.8rem; display: none;"></div>
+                <div class="input-group">
+                    <label>USERNAME</label>
+                    <input type="text" id="login-username" placeholder="Enter username..." required>
+                </div>
+                <div class="input-group">
+                    <label>PASSWORD</label>
+                    <input type="password" id="login-password" placeholder="Enter password..." required>
+                </div>
+                <button class="submit-btn" onclick="handleLogin()">
+                    <span class="btn-corner tl"></span>
+                    <span class="btn-corner tr"></span>
+                    <span class="btn-corner bl"></span>
+                    <span class="btn-corner br"></span>
+                    &gt; INITIATE
+                </button>
+            </div>
+
+            <div id="register-form" class="auth-form {% if active_tab == 'register' %}active{% endif %}">
+                <h2 class="form-title">NEW_ENTITY_REGISTRATION</h2>
+                <div id="reg-error" style="color: red; margin-bottom: 10px; font-family: var(--font-body); font-size: 0.8rem; display: none;"></div>
+                <div id="reg-success" style="color: var(--primary-color); margin-bottom: 10px; font-family: var(--font-body); font-size: 0.8rem; display: none;"></div>
+                <div class="input-group">
+                    <label>USERNAME</label>
+                    <input type="text" id="reg-username" placeholder="Desired username..." required>
+                </div>
+                <div class="input-group">
+                    <label>TEAM NAME</label>
+                    <input type="text" id="reg-teamname" placeholder="Affiliation/Team..." required>
+                </div>
+                <div class="input-group">
+                    <label>EMAIL</label>
+                    <input type="email" id="reg-email" placeholder="Communication relay..." required>
+                </div>
+                <div class="input-group">
+                    <label>PASSWORD</label>
+                    <input type="password" id="reg-password" placeholder="Secure passcode..." required>
+                </div>
+                <button class="submit-btn" onclick="handleRegister()">
+                    <span class="btn-corner tl"></span>
+                    <span class="btn-corner tr"></span>
+                    <span class="btn-corner bl"></span>
+                    <span class="btn-corner br"></span>
+                    &gt; CREATE_RECORD
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+            
+            if (tabId === 'login') {
+                document.querySelectorAll('.auth-tab')[0].classList.add('active');
+                document.getElementById('login-form').classList.add('active');
+            } else {
+                document.querySelectorAll('.auth-tab')[1].classList.add('active');
+                document.getElementById('register-form').classList.add('active');
+            }
+        }
+
+        async function handleLogin() {
+            const u = document.getElementById('login-username').value;
+            const p = document.getElementById('login-password').value;
+            const errDiv = document.getElementById('login-error');
+            errDiv.style.display = 'none';
+
+            if (!u || !p) {
+                errDiv.innerText = "Error: Missing credentials.";
+                errDiv.style.display = 'block';
+                return;
+            }
+
+            const res = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: u, password: p })
+            });
+
+            const data = await res.json();
+            if (res.ok) {
+                localStorage.setItem('void_token', data.token);
+                localStorage.setItem('void_user', data.username);
+                window.location.href = '/level1';
+            } else {
+                errDiv.innerText = "Error: " + (data.error || 'Authentication failed.');
+                errDiv.style.display = 'block';
+            }
+        }
+
+        async function handleRegister() {
+            const u = document.getElementById('reg-username').value;
+            const t = document.getElementById('reg-teamname').value;
+            const e = document.getElementById('reg-email').value;
+            const p = document.getElementById('reg-password').value;
+            
+            const errDiv = document.getElementById('reg-error');
+            const succDiv = document.getElementById('reg-success');
+            errDiv.style.display = 'none';
+            succDiv.style.display = 'none';
+
+            if (!u || !t || !e || !p) {
+                errDiv.innerText = "Error: All fields are required.";
+                errDiv.style.display = 'block';
+                return;
+            }
+
+            const res = await fetch('/api/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: u, teamname: t, email: e, password: p })
+            });
+
+            const data = await res.json();
+            if (res.ok) {
+                succDiv.innerText = "Registration successful. Please login.";
+                succDiv.style.display = 'block';
+                // switch to login tab
+                setTimeout(() => { switchTab('login'); }, 1500);
+            } else {
+                errDiv.innerText = "Error: " + (data.error || 'Registration failed.');
+                errDiv.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

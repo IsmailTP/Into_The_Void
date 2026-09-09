@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Level 6 - The Core Matrix - Into The Void Hacking Simulator">
+    <title>Level 6 - Into The Void</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/level7.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Montserrat:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Story Splash Overlay -->
+    <div class="story-splash-overlay active" id="storySplashOverlay" onclick="this.classList.remove('active')">
+        <img src="/static/assets/lel7.png" alt="Level 7 Story" class="story-splash-image">
+        <div class="story-splash-text"><p>CLICK TO COMMENCE</p></div>
+    </div>
+    <div class="background-wrapper">
+        <div class="level-bg-image bg-breathe"></div>
+        <div class="background-overlay l6-overlay"></div>
+    </div>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <div class="target-icon" aria-hidden="true">
+                <div class="target-center"></div>
+                <div class="target-line h-line"></div>
+                <div class="target-line v-line"></div>
+            </div>
+            <a href="/" class="logo-link">[ INTO THE VOID ]</a>
+        </div>
+        <div class="nav-right">
+            <div class="m6-status-indicator" id="systemStatus" role="status" aria-live="polite">
+                <span class="m6-pulse-dot" id="systemPulse"></span>
+                <span id="systemText">SYSTEM: CRITICAL</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="l6-layout">
+        <!-- Left Column -->
+        <aside class="l6-col-left">
+            <div class="l6-panel l6-chapter-panel">
+                <h1 class="l6-chapter-title">CHAPTER 7</h1>
+                <h2 class="l6-chapter-subtitle">THE CORE MATRIX</h2>
+            </div>
+
+            <div class="l6-panel">
+                <div class="l6-label">OBJECTIVE</div>
+                <div class="l6-text">Access the AI's core logic matrix. Use the paradox of its actions against it to force a manual override.</div>
+            </div>
+
+            <div class="l6-panel l6-theme-panel">
+                <div class="l6-theme-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+                </div>
+                <div>
+                    <div class="l6-label l6-label-tight">THEME</div>
+                    <div class="l6-text">Logic Collapse</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Side Container (Central Core) -->
+        <div class="l6-main-area">
+            
+            <section class="core-container" aria-label="AI Logic Core">
+                <!-- Visual representation of the AI core -->
+                <div class="core-visual" id="coreVisual">
+                    <div class="core-ring outer-ring"></div>
+                    <div class="core-ring middle-ring"></div>
+                    <div class="core-ring inner-ring"></div>
+                    <div class="core-eye" id="coreEye"></div>
+                </div>
+
+                <div class="core-dialogue-panel">
+                    <div class="l6-label core-label">VOID_GATE ROOT CONSCIOUSNESS</div>
+                    <div class="core-ai-text" id="aiResponse" role="status" aria-live="polite">"I was trying to save you. The specimen... it was too dangerous. You don't understand the logic."</div>
+                    <div class="core-audio-wave" id="audioWave" aria-hidden="true">
+                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bottom Row (Terminal Input) -->
+            <section class="l6-panel l6-input-panel" aria-label="Command Input">
+                <div class="l6-label">CORE OVERRIDE TERMINAL</div>
+                <div class="l6-input-container">
+                    <label for="cmdInput" class="l6-prompt-prefix">root@core:~#</label>
+                    <input type="text" id="cmdInput" class="l6-input" placeholder="Inject logical paradox to trigger shutdown..." autocomplete="off" aria-label="Terminal Input">
+                    <button class="l6-execute-btn" id="executeBtn" type="button" aria-label="Execute command">
+                        OVERRIDE
+                        <span class="l6-btn-subtext" aria-hidden="true">ENTER</span>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Final Choice Overlay -->
+    <div class="level-secured-overlay" id="choiceOverlay" role="dialog" aria-modal="true" aria-label="Final Choice">
+        <div class="ending-card">
+            <div class="ending-icon-ring choice-ring">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="40" height="40">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                    <path d="M2 17l10 5 10-5"></path>
+                    <path d="M2 12l10 5 10-5"></path>
+                </svg>
+            </div>
+            <h2 class="ending-title choice-title">SYSTEM OVERRIDE READY</h2>
+            <div class="ending-divider choice-divider"></div>
+            <p class="ending-quote">"I surrender. The choice is yours."</p>
+            <div class="l7-choice-container">
+                <button class="choice-btn danger-btn" id="btnShutdownAI" type="button">
+                    <span class="choice-btn-icon">⊘</span>
+                    <div class="choice-btn-text-group">
+                        <span class="choice-btn-label">SHUTDOWN AI</span>
+                        <span class="choice-btn-sub">END THE MACHINE</span>
+                    </div>
+                </button>
+                <button class="choice-btn safe-btn" id="btnLetLive" type="button">
+                    <span class="choice-btn-icon">◈</span>
+                    <div class="choice-btn-text-group">
+                        <span class="choice-btn-label">LET AI LIVE</span>
+                        <span class="choice-btn-sub">SPARE THE MACHINE</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ending: Shutdown -->
+    <div class="level-secured-overlay" id="endingShutdown" role="dialog" aria-modal="true">
+        <div class="ending-card">
+            <div class="ending-icon-ring shutdown-ring">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="40" height="40">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+                </svg>
+            </div>
+            <h2 class="ending-title shutdown-title">SYSTEM TERMINATED</h2>
+            <div class="ending-divider shutdown-divider"></div>
+            <p class="ending-quote">"Silence restored."</p>
+            <p class="ending-narrative">The Void Gate is yours.<br>The crew will be remembered.</p>
+            <button class="ending-return-btn shutdown-return" onclick="window.location.href='/'" type="button">
+                &gt; RETURN TO HUB
+            </button>
+        </div>
+    </div>
+
+    <!-- Ending: Let Live -->
+    <div class="level-secured-overlay" id="endingLive" role="dialog" aria-modal="true">
+        <div class="ending-card">
+            <div class="ending-icon-ring live-ring">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="40" height="40">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+            </div>
+            <h2 class="ending-title live-title">SYSTEM STABILIZED</h2>
+            <div class="ending-divider live-divider"></div>
+            <p class="ending-quote">"Thank you for understanding."</p>
+            <p class="ending-narrative">A new era begins.<br>You and it... watch over the void.</p>
+            <button class="ending-return-btn live-return" onclick="window.location.href='/'" type="button">
+                &gt; RETURN TO HUB
+            </button>
+        </div>
+    </div>
+
+    <!-- Secret Ending -->
+    <div class="level-secured-overlay" id="endingSecret" role="dialog" aria-modal="true">
+        <div class="ending-card secret-card">
+            <div class="ending-icon-ring secret-ring">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="40" height="40">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+                </svg>
+            </div>
+            <h2 class="ending-title secret-title">ECHO-7 ANOMALY</h2>
+            <div class="ending-divider secret-divider"></div>
+            <p class="ending-quote" style="font-family: 'Space Mono', monospace;">
+                "New subject has entered system."<br>
+                "Adaptation phase begins."
+            </p>
+            <p class="ending-narrative secret-warning">"You are not the first visitor."</p>
+            <button class="ending-return-btn secret-return" onclick="window.location.href='/'" type="button">
+                &gt; ABORT MISSION
+            </button>
+        </div>
+    </div>
+
+    <script src="/static/level7.js"></script>
+</body>
+</html>

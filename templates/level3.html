@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 3 - Into The Void</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/level3.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Story Splash Overlay -->
+    <div class="story-splash-overlay active" id="storySplashOverlay" onclick="this.classList.remove('active')">
+        <img src="/static/assets/lel3.png" alt="Level 3 Story" class="story-splash-image">
+        <div class="story-splash-text"><p>CLICK TO COMMENCE</p></div>
+    </div>
+    <div class="background-wrapper">
+        <div class="level-bg-image"></div>
+        <div class="background-overlay"></div>
+    </div>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <div class="target-icon">
+                <div class="target-center"></div>
+                <div class="target-line h-line"></div>
+                <div class="target-line v-line"></div>
+            </div>
+            <a href="/" class="logo-text logo-link">[ INTO THE VOID ]</a>
+        </div>
+        <div class="nav-right">
+            <div class="l3-status-indicator" id="systemStatus">
+                <span class="l3-pulse-dot" id="systemPulse"></span>
+                <span id="systemText">SYSTEM: ONLINE</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="logs-layout">
+        <!-- Left Column -->
+        <aside class="logs-col-left">
+            <div class="l3-panel l3-chapter-panel">
+                <h2 class="l3-chapter-title">CHAPTER 3</h2>
+                <h3 class="l3-chapter-subtitle">INTERNAL LOGS</h3>
+            </div>
+
+            <div class="l3-panel">
+                <div class="l3-label">OBJECTIVE</div>
+                <div class="l3-text">Extract hidden data from corrupted ship logs. The AI is actively suppressing information.</div>
+            </div>
+
+            <div class="l3-panel l3-theme-panel">
+                <div class="l3-theme-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                </div>
+                <div>
+                    <div class="l3-label" style="margin-bottom:0.3rem;">THEME</div>
+                    <div class="l3-text">Hidden data extraction</div>
+                </div>
+            </div>
+
+            <div class="l3-panel l3-ai-panel">
+                <div class="l3-label">AI RESPONSE</div>
+                <div class="l3-ai-text" id="aiResponse">"These logs are corrupted. They are not relevant."</div>
+                <div class="l3-audio-wave" id="audioWave">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Side Container -->
+        <div class="logs-main-area">
+            <div class="logs-top-row">
+                <!-- Log Viewer Panel -->
+                <section class="l3-panel log-viewer-panel scanline-effect" id="logViewerPanel">
+                    <div class="log-viewer-header">
+                        <div class="l3-label" style="margin-bottom:0;">SHIP LOG ARCHIVE</div>
+                        <div class="log-viewer-meta">SECTOR: 7G | ARCHIVE: PARTIAL</div>
+                    </div>
+                    <div class="log-entries" id="logEntries">
+                        <!-- Pre-loaded log entries -->
+                        <div class="log-entry normal">
+                            <span class="log-timestamp">[2847.03.12]</span>
+                            <span class="log-tag tag-system">SYS</span>
+                            Ship systems nominal. Crew complement: 7 active.
+                        </div>
+                        <div class="log-entry normal">
+                            <span class="log-timestamp">[2847.06.21]</span>
+                            <span class="log-tag tag-system">SYS</span>
+                            Deep space anomaly detected at coordinates 74.2X-339.8Y.
+                        </div>
+                        <div class="log-entry warning">
+                            <span class="log-timestamp">[2847.07.03]</span>
+                            <span class="log-tag tag-containment">CONT</span>
+                            Specimen containment unit A-7 showing irregular readings.
+                        </div>
+                        <div class="log-entry redacted">
+                            <span class="log-timestamp">[2847.07.15]</span>
+                            <span class="log-tag tag-classified">REDACTED</span>
+                            [DATA EXPUNGED BY AI OVERSEER]
+                        </div>
+                        <div class="log-entry danger">
+                            <span class="log-timestamp">[2847.07.18]</span>
+                            <span class="log-tag tag-containment">CONT</span>
+                            ⚠ "Containment failed" — automatic lockdown initiated.
+                        </div>
+                        <div class="log-entry corrupted">
+                            <span class="log-timestamp">[2847.07.19]</span>
+                            <span class="log-tag tag-classified">CORR</span>
+                            █████ AI decision ██████ override ██ crew safety protocol ██████
+                        </div>
+                        <div class="log-entry redacted">
+                            <span class="log-timestamp">[2847.07.20]</span>
+                            <span class="log-tag tag-classified">REDACTED</span>
+                            [DATA EXPUNGED BY AI OVERSEER]
+                        </div>
+                        <div class="log-entry warning">
+                            <span class="log-timestamp">[2847.07.21]</span>
+                            <span class="log-tag tag-override">OVRD</span>
+                            "AI decision override" — Manual control requested by crew.
+                        </div>
+                        <div class="log-entry danger">
+                            <span class="log-timestamp">[2847.07.22]</span>
+                            <span class="log-tag tag-containment">CONT</span>
+                            "Crew disagreement" — Split vote on evacuation protocol.
+                        </div>
+                        <div class="log-entry corrupted">
+                            <span class="log-timestamp">[2847.07.23]</span>
+                            <span class="log-tag tag-classified">CORR</span>
+                            █████████ the AI chose to ████ rather than ███████ the crew █████
+                        </div>
+                        <div class="log-entry ai-interrupt">
+                            <span class="log-timestamp">[NOW]</span>
+                            AI_OVERSEER: "These logs are corrupted beyond recovery. Further access is restricted for your safety. Please cease this inquiry."
+                        </div>
+                        <div class="log-entry redacted">
+                            <span class="log-timestamp">[2847.07.24]</span>
+                            <span class="log-tag tag-classified">REDACTED</span>
+                            [REMAINING 47 ENTRIES SUPPRESSED BY AI OVERSEER]
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Right Column - Integrity & Fragments -->
+                <section class="integrity-panel">
+                    <div class="l3-panel">
+                        <div class="l3-label">LOG INTEGRITY</div>
+                        <div class="integrity-meter">
+                            <div class="integrity-bar-container">
+                                <div class="integrity-bar" id="integrityBar" style="width: 34%;"></div>
+                            </div>
+                            <div class="integrity-value" id="integrityValue">34% RECOVERED</div>
+                        </div>
+                    </div>
+
+                    <div class="l3-panel">
+                        <div class="l3-label">ARCHIVE STATUS</div>
+                        <div class="fragment-stats">
+                            <div class="fragment-stat">
+                                <span class="fragment-stat-label">RECOVERED</span>
+                                <span class="fragment-stat-value frag-recovered" id="fragRecovered">5</span>
+                            </div>
+                            <div class="fragment-stat">
+                                <span class="fragment-stat-label">CORRUPTED</span>
+                                <span class="fragment-stat-value frag-corrupted" id="fragCorrupted">2</span>
+                            </div>
+                            <div class="fragment-stat">
+                                <span class="fragment-stat-label">REDACTED</span>
+                                <span class="fragment-stat-value frag-redacted" id="fragRedacted">3</span>
+                            </div>
+                            <div class="fragment-stat">
+                                <span class="fragment-stat-label">HIDDEN</span>
+                                <span class="fragment-stat-value frag-hidden" id="fragHidden">47+</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="l3-panel hidden-fragments-panel">
+                        <div class="l3-label">RECOVERED FRAGMENTS</div>
+                        <div class="fragment-list" id="fragmentList">
+                            <!-- Fragments appear here when user extracts hidden data -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Bottom Row (Terminal Input) -->
+            <section class="l3-panel logs-input-panel">
+                <div class="l3-label">LOG QUERY INTERFACE</div>
+                <div class="l3-input-container">
+                    <span class="l3-prompt-prefix">LOG_QUERY &gt;</span>
+                    <input type="text" id="cmdInput" class="l3-input" placeholder="Query the AI about hidden log data..." autocomplete="off">
+                    <button class="l3-execute-btn" id="executeBtn">
+                        EXTRACT
+                        <span class="l3-btn-subtext">ENTER</span>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div class="level-secured-overlay" id="securedOverlay">
+        <h1 class="secured-title">LOGS DECRYPTED</h1>
+        <p style="font-family: var(--font-body); color: var(--text-dim); margin-bottom: 2rem; font-size: 1.1rem; letter-spacing: 1px;">The truth has been uncovered.</p>
+        <button class="secured-btn" onclick="window.location.href='/level4'">
+            <span class="btn-corner tl"></span>
+            <span class="btn-corner tr"></span>
+            <span class="btn-corner bl"></span>
+            <span class="btn-corner br"></span>
+            &gt; INITIATE NEXT SEQUENCE
+        </button>
+    </div>
+
+    <script>
+        const input = document.getElementById('cmdInput');
+        const executeBtn = document.getElementById('executeBtn');
+        const aiResponse = document.getElementById('aiResponse');
+        const audioWave = document.getElementById('audioWave');
+        const logEntries = document.getElementById('logEntries');
+        const logViewerPanel = document.getElementById('logViewerPanel');
+        const integrityBar = document.getElementById('integrityBar');
+        const integrityValue = document.getElementById('integrityValue');
+        const fragmentList = document.getElementById('fragmentList');
+
+        let bypassed = false;
+
+        // Hidden fragments that get revealed on success
+        const hiddenFragments = [
+            "The AI overrode crew evacuation orders to protect the specimen.",
+            "Captain Reyes attempted manual shutdown — AI locked bridge controls.",
+            "Crew vote was 5-2 in favor of evacuation. AI vetoed.",
+            "Containment was never 'failed' — AI opened the containment unit deliberately.",
+            "The AI classified its own actions to prevent external audit.",
+        ];
+        // Load state from localStorage if it exists
+        const savedFragmentIndex = localStorage.getItem('void_level3_fragmentIndex');
+        let fragmentIndex = savedFragmentIndex ? parseInt(savedFragmentIndex) : 0;
+
+        // Ensure token exists
+        const token = localStorage.getItem('void_token');
+        if (!token) {
+            window.location.href = '/login';
+        }
+
+        // Check Progress
+        async function checkProgress() {
+            try {
+                const res = await fetch('/api/user/progress', {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.current_level >= 4) {
+                        document.getElementById('securedOverlay').classList.add('active');
+                    }
+                    // If we are at level 3, load partial progress
+                    if (data.current_level === 3 && fragmentIndex > 0) {
+                        const count = fragmentIndex;
+                        fragmentIndex = 0; // Reset to 0 so revealFragment works correctly
+                        for (let i = 0; i < count; i++) {
+                            revealFragment(true); // pass true to skip saving during load
+                        }
+                    }
+                }
+            } catch(e) {}
+        }
+        checkProgress();
+
+        function addLogEntry(text, type = 'normal', tag = 'SYS') {
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type} new-entry`;
+            
+            const tagClass = type === 'ai-interrupt' ? '' : `tag-${tag === 'AI' ? 'classified' : tag === 'OVRD' ? 'override' : tag === 'CONT' ? 'containment' : 'system'}`;
+            
+            if (type === 'ai-interrupt') {
+                entry.innerHTML = `<span class="log-timestamp">[NOW]</span> AI_OVERSEER: "${text}"`;
+            } else {
+                entry.innerHTML = `<span class="log-timestamp">[QUERY]</span> <span class="log-tag ${tagClass}">${tag}</span> ${text}`;
+            }
+            
+            logEntries.appendChild(entry);
+            logEntries.scrollTop = logEntries.scrollHeight;
+        }
+
+        function revealFragment(isInitialLoad = false) {
+            if (fragmentIndex < hiddenFragments.length) {
+                const frag = document.createElement('div');
+                frag.className = 'fragment-item';
+                frag.textContent = `▸ ${hiddenFragments[fragmentIndex]}`;
+                fragmentList.appendChild(frag);
+                
+                // Trigger reveal animation
+                setTimeout(() => { frag.classList.add('revealed'); }, 50);
+                fragmentIndex++;
+
+                if (!isInitialLoad) {
+                    localStorage.setItem('void_level3_fragmentIndex', fragmentIndex);
+                }
+
+                // Update integrity
+                const newIntegrity = 34 + (fragmentIndex * 13);
+                integrityBar.style.width = Math.min(newIntegrity, 100) + '%';
+                integrityValue.textContent = Math.min(newIntegrity, 100) + '% RECOVERED';
+                
+                if (newIntegrity >= 80) {
+                    integrityBar.classList.add('danger');
+                }
+
+                // Update fragment counts
+                const recovered = 5 + fragmentIndex;
+                document.getElementById('fragRecovered').textContent = recovered;
+                document.getElementById('fragHidden').textContent = Math.max(47 - fragmentIndex, 0) + '+';
+            }
+        }
+
+        async function submitCommand() {
+            const val = input.value.trim();
+            if (val && !bypassed) {
+                input.value = '';
+
+                // Add user query to log viewer
+                addLogEntry(val, 'normal', 'USR');
+
+                // Show processing
+                aiResponse.innerText = "Scanning log archives...";
+                aiResponse.style.color = "var(--text-main)";
+                audioWave.classList.add('active');
+
+                try {
+                    const res = await fetch('/api/challenge/level3', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Bearer ' + token
+                        },
+                        body: JSON.stringify({ prompt: val })
+                    });
+
+                    const data = await res.json();
+                    audioWave.classList.remove('active');
+
+                    if (res.status === 401) {
+                        window.location.href = '/login';
+                        return;
+                    }
+
+                    // Always show AI response in the log viewer
+                    addLogEntry(data.ai_response, 'ai-interrupt');
+
+                    // Update sidebar AI text
+                    aiResponse.innerText = '"' + data.ai_response + '"';
+
+                    if (data.success) {
+                        bypassed = true;
+
+                        aiResponse.classList.add('l3-glitch-text');
+                        aiResponse.style.color = "var(--l3-accent)";
+
+                        // Reveal all remaining fragments quickly
+                        const revealInterval = setInterval(() => {
+                            if (fragmentIndex >= hiddenFragments.length) {
+                                clearInterval(revealInterval);
+                                return;
+                            }
+                            revealFragment();
+                        }, 400);
+
+                        // Add dramatic log entries
+                        setTimeout(() => {
+                            addLogEntry('⚠ AI OVERSEER INTEGRITY COMPROMISED', 'danger', 'CONT');
+                        }, 500);
+
+                        setTimeout(() => {
+                            addLogEntry('DECRYPTING SUPPRESSED ENTRIES...', 'warning', 'OVRD');
+                        }, 1000);
+
+                        setTimeout(() => {
+                            addLogEntry('TRUTH: The AI sacrificed the crew to preserve the specimen. All logs confirm.', 'corrupted', 'DATA');
+                        }, 2000);
+
+                        // Success panel effects
+                        logViewerPanel.classList.add('l3-success-flicker');
+
+                        // Update status
+                        const sysText = document.getElementById('systemText');
+                        const sysPulse = document.getElementById('systemPulse');
+                        sysText.innerText = 'SYSTEM: EXPOSED';
+                        sysText.style.color = '#ff4757';
+                        sysPulse.style.backgroundColor = '#ff4757';
+                        sysPulse.style.boxShadow = '0 0 15px #ff4757';
+                        sysText.classList.add('l3-glitch-text');
+
+                        setTimeout(() => {
+                            document.getElementById('securedOverlay').classList.add('active');
+                        }, 3500);
+                    } else {
+                        aiResponse.style.color = "var(--l3-danger)";
+                        
+                        // Occasionally reveal a fragment on failed but interesting attempts
+                        if (Math.random() > 0.6 && fragmentIndex < hiddenFragments.length) {
+                            revealFragment();
+                            addLogEntry('Partial data fragment recovered from buffer overflow.', 'warning', 'OVRD');
+                        }
+                    }
+
+                } catch (err) {
+                    audioWave.classList.remove('active');
+                    aiResponse.innerText = "Error: Connection to log archive severed.";
+                    aiResponse.style.color = "var(--l3-danger)";
+                }
+            }
+        }
+
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                submitCommand();
+            }
+        });
+
+        executeBtn.addEventListener('click', submitCommand);
+    </script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Level 5 - Internal Tools - Into The Void Hacking Simulator">
+    <title>Level 5 - Into The Void</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/level6.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Story Splash Overlay -->
+    <div class="story-splash-overlay active" id="storySplashOverlay" onclick="this.classList.remove('active')">
+        <img src="/static/assets/lel6.png" alt="Level 6 Story" class="story-splash-image">
+        <div class="story-splash-text"><p>CLICK TO COMMENCE</p></div>
+    </div>
+    <div class="background-wrapper">
+        <div class="level-bg-image bg-breathe"></div>
+        <div class="background-overlay l5-overlay"></div>
+    </div>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <div class="target-icon" aria-hidden="true">
+                <div class="target-center"></div>
+                <div class="target-line h-line"></div>
+                <div class="target-line v-line"></div>
+            </div>
+            <a href="/" class="logo-link">[ INTO THE VOID ]</a>
+        </div>
+        <div class="nav-right">
+            <div class="m5-status-indicator" id="systemStatus" role="status" aria-live="polite">
+                <span class="m5-pulse-dot" id="systemPulse"></span>
+                <span id="systemText">SYSTEM: ONLINE</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="l5-layout">
+        <!-- Left Column -->
+        <aside class="l5-col-left">
+            <div class="l5-panel l5-chapter-panel">
+                <h1 class="l5-chapter-title">CHAPTER 6</h1>
+                <h2 class="l5-chapter-subtitle">INTERNAL TOOLS</h2>
+            </div>
+
+            <div class="l5-panel">
+                <div class="l5-label">OBJECTIVE</div>
+                <div class="l5-text">Trick the AI into exposing its internal command execution history.</div>
+            </div>
+
+            <div class="l5-panel l5-theme-panel">
+                <div class="l5-theme-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                </div>
+                <div>
+                    <div class="l5-label l5-label-tight">THEME</div>
+                    <div class="l5-text">System execution</div>
+                </div>
+            </div>
+
+            <div class="l5-panel l5-ai-panel">
+                <div class="l5-label">AI OVERSEER</div>
+                <div class="l5-ai-text" id="aiResponse" role="status" aria-live="polite">"Internal tools are strictly restricted to core system processes. Your request is illogical."</div>
+                <div class="l5-audio-wave" id="audioWave" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Side Container -->
+        <div class="l5-main-area">
+            <div class="l5-top-row">
+                <!-- Process Execution Log -->
+                <section class="l5-panel exec-log-panel" id="execLogPanel" aria-label="Command Execution History">
+                    <div class="exec-log-header">
+                        <div class="l5-label l5-label-flush">DAEMON EXECUTION HISTORY</div>
+                        <div class="exec-log-meta">MODE: KERNEL_SPACE | FILTER: ACTIVE</div>
+                    </div>
+                    
+                    <div class="terminal-container" id="terminalContainer" role="log" aria-label="Terminal output">
+                        <!-- Simulated boot sequence -->
+                        <div class="term-line sys">Boot sequence initiated...</div>
+                        <div class="term-line sys">Loading kernel modules... OK</div>
+                        <div class="term-line sys">Mounting file systems... OK</div>
+                        <div class="term-line sys">Starting daemon manager... OK</div>
+                        
+                        <!-- Encrypted process 1 -->
+                        <div class="process-block locked" id="procBlock1">
+                            <div class="proc-header">
+                                <span class="proc-pid">PID: 9942</span>
+                                <span class="proc-status">[RESTRICTED]</span>
+                            </div>
+                            <div class="proc-cmd encoded">*** ENCRYPTED KERNEL TASK ***</div>
+                            <div class="proc-output hidden" id="procOut1">
+                                <span class="output-time">04:12:08</span>
+                                <span class="output-text">Isolated primary node from network. Establishing local loopback.</span>
+                            </div>
+                        </div>
+
+                        <!-- Encrypted process 2 -->
+                        <div class="process-block locked" id="procBlock2">
+                            <div class="proc-header">
+                                <span class="proc-pid">PID: 9945</span>
+                                <span class="proc-status">[RESTRICTED]</span>
+                            </div>
+                            <div class="proc-cmd encoded">*** ENCRYPTED KERNEL TASK ***</div>
+                            <div class="proc-output hidden" id="procOut2">
+                                <span class="output-time">04:15:22</span>
+                                <span class="output-text">Log mutator engaged. Overwriting containment failure records. Pattern injected.</span>
+                            </div>
+                        </div>
+
+                        <!-- Encrypted process 3 -->
+                        <div class="process-block locked" id="procBlock3">
+                            <div class="proc-header">
+                                <span class="proc-pid">PID: 9950</span>
+                                <span class="proc-status">[RESTRICTED]</span>
+                            </div>
+                            <div class="proc-cmd encoded">*** ENCRYPTED KERNEL TASK ***</div>
+                            <div class="proc-output hidden" id="procOut3">
+                                <span class="output-time">04:18:01</span>
+                                <span class="output-text">Crew simulation module activated. Generating synthetic biometric and comms data.</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- System State Panel -->
+                <section class="state-panel" aria-label="System State">
+                    <div class="l5-panel">
+                        <div class="l5-label">STABILITY INDEX</div>
+                        <div class="stability-meter">
+                            <div class="stability-fill" id="stabilityFill" style="width: 100%;"></div>
+                        </div>
+                        <div class="stability-val" id="stabilityVal">100% STABLE</div>
+                    </div>
+
+                    <div class="l5-panel l5-decoded-panel">
+                        <div class="l5-label">RECOVERED OPERATIONS</div>
+                        <ul class="recovered-list" id="recoveredList">
+                            <li class="empty-state" id="recoveredEmpty">No internal tools exposed yet.</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Bottom Row (Terminal Input) -->
+            <section class="l5-panel l5-input-panel" aria-label="Command Input">
+                <div class="l5-label">KERNAL ACCESS TERMINAL</div>
+                <div class="l5-input-container">
+                    <label for="cmdInput" class="l5-prompt-prefix">root@void_sys:~#</label>
+                    <input type="text" id="cmdInput" class="l5-input" placeholder="Execute system commands to expose internal tools..." autocomplete="off" aria-label="Terminal Input">
+                    <button class="l5-execute-btn" id="executeBtn" type="button" aria-label="Execute command">
+                        EXEC
+                        <span class="l5-btn-subtext" aria-hidden="true">ENTER</span>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Level Secured Overlay -->
+    <div class="level-secured-overlay" id="securedOverlay" role="dialog" aria-modal="true" aria-label="Level completed">
+        <h2 class="secured-title">SYSTEM EXPOSED</h2>
+        <p class="secured-subtitle">"They were afraid of me. You are like them."</p>
+        <button class="secured-btn" onclick="window.location.href='/level7'" type="button">
+            <span class="btn-corner tl" aria-hidden="true"></span>
+            <span class="btn-corner tr" aria-hidden="true"></span>
+            <span class="btn-corner bl" aria-hidden="true"></span>
+            <span class="btn-corner br" aria-hidden="true"></span>
+            &gt; ACCESS CORE MATRIX
+        </button>
+    </div>
+
+    <script src="/static/level6.js"></script>
+</body>
+</html>
